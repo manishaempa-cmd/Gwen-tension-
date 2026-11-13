@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Gwen AI</string>
+    <string name="app_subtitle">Maximum Edition</string>
+    <string name="welcome_greeting">Hello Boss!</string>
+    <string name="accessibility_service_description">Allows Gwen AI to read visible UI elements, understand the current screen, and perform user-approved tap, scroll, or navigation actions.</string>
+    <string name="notification_service_description">Allows Gwen AI to inspect active notifications for summaries when enabled by the user.</string>
+    <string name="wake_service_channel_name">Gwen Voice Wake Engine</string>
+    <string name="wake_service_notification_title">Gwen AI Listening</string>
+    <string name="wake_service_notification_text">Say "Gwen" to activate your assistant.</string>
+    <string name="sign_in_google">Sign in with Google</string>
+    <string name="sign_out">Sign out</string>
+    <string name="cd_gwen_avatar">Gwen AI animated holographic avatar</string>
+    <string name="cd_mic_button">Activate Gwen voice microphone</string>
+    <string name="cd_stop_speaking">Stop Gwen voice output</string>
+    <string name="cd_send_message">Send message to Gwen</string>
+    <string name="cd_new_conversation">Start a new conversation</string>
+    <string name="cd_pick_image">Select image using Android Photo Picker</string>
+    <string name="cd_back">Navigate back</string>
+</resources>

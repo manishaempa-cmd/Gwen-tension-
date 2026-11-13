@@ -1,0 +1,230 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Authenticated user profile and Gwen AI assistant preferences.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "displayName": {
+          "type": "string",
+          "description": "User display name."
+        },
+        "preferredLanguage": {
+          "type": "string",
+          "enum": ["en-IN", "hi-IN", "hinglish"],
+          "description": "Selected recognition and assistant language."
+        },
+        "preferredModel": {
+          "type": "string",
+          "enum": ["gemini-3.8-flash", "gemini-3.5-flash-lite", "gemini-4-argon"],
+          "description": "Selected Gemini model identifier."
+        },
+        "memoryEnabled": {
+          "type": "boolean",
+          "description": "Whether Gwen AI personal memory storage is enabled."
+        },
+        "voiceEnrolled": {
+          "type": "boolean",
+          "description": "Whether owner voiceprint has been enrolled on device."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "displayName", "preferredLanguage", "preferredModel", "memoryEnabled", "voiceEnrolled", "createdAt", "updatedAt"]
+    },
+    "MemoryItem": {
+      "title": "MemoryItem",
+      "description": "User-approved personal memory, preference, project context, or gaming note.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Concise title for the memory."
+        },
+        "content": {
+          "type": "string",
+          "description": "Memory content body."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["preference", "context", "note", "gaming"],
+          "description": "Category of personal memory."
+        },
+        "isApproved": {
+          "type": "boolean",
+          "description": "Whether the user explicitly approved saving this memory."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "title", "content", "category", "isApproved", "createdAt", "updatedAt"]
+    },
+    "Conversation": {
+      "title": "Conversation",
+      "description": "Multi-turn AI conversation session.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "title": {
+          "type": "string",
+          "description": "Conversation title."
+        },
+        "mode": {
+          "type": "string",
+          "enum": ["general", "coding", "research", "story", "translation", "gaming"],
+          "description": "Active Gemini AI assistant mode."
+        },
+        "lastMessagePreview": {
+          "type": "string",
+          "description": "Snippet of the latest message."
+        },
+        "messageCount": {
+          "type": "integer",
+          "description": "Total number of messages in the thread."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "title", "mode", "lastMessagePreview", "messageCount", "createdAt", "updatedAt"]
+    },
+    "ChatMessage": {
+      "title": "ChatMessage",
+      "description": "Single message inside a Gwen AI conversation.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "role": {
+          "type": "string",
+          "enum": ["user", "assistant"],
+          "description": "Sender role."
+        },
+        "text": {
+          "type": "string",
+          "description": "Message text content."
+        },
+        "expression": {
+          "type": "string",
+          "description": "Gwen avatar expression state associated with this response."
+        },
+        "hasImage": {
+          "type": "boolean",
+          "description": "Whether the message included an image attachment."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "role", "text", "expression", "hasImage", "createdAt"]
+    },
+    "AssistantTask": {
+      "title": "AssistantTask",
+      "description": "Structured task execution lifecycle record.",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the owner."
+        },
+        "command": {
+          "type": "string",
+          "description": "Original user command."
+        },
+        "category": {
+          "type": "string",
+          "enum": ["phone", "ai", "media", "screen", "memory"],
+          "description": "Task execution domain."
+        },
+        "stage": {
+          "type": "string",
+          "enum": ["understanding", "analyzing", "planning", "checking_permissions", "executing", "verifying", "completed", "failed"],
+          "description": "Current execution pipeline stage."
+        },
+        "planSummary": {
+          "type": "string",
+          "description": "Structured plan generated for the task."
+        },
+        "verificationResult": {
+          "type": "string",
+          "description": "Post-execution verification outcome."
+        },
+        "requiresInternet": {
+          "type": "boolean",
+          "description": "Whether the task required internet connectivity."
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of creation (FieldValue.serverTimestamp())."
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp of last update (FieldValue.serverTimestamp())."
+        }
+      },
+      "required": ["userId", "command", "category", "stage", "planSummary", "verificationResult", "requiresInternet", "createdAt", "updatedAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": { "$ref": "#/entities/UserProfile" },
+      "description": "User profile and Gwen AI assistant configuration."
+    },
+    "/users/{userId}/memories/{memoryId}": {
+      "schema": { "$ref": "#/entities/MemoryItem" },
+      "description": "User-scoped personal memory records."
+    },
+    "/users/{userId}/conversations/{conversationId}": {
+      "schema": { "$ref": "#/entities/Conversation" },
+      "description": "User-scoped AI conversation threads."
+    },
+    "/users/{userId}/conversations/{conversationId}/messages/{messageId}": {
+      "schema": { "$ref": "#/entities/ChatMessage" },
+      "description": "Messages belonging to a user conversation."
+    },
+    "/users/{userId}/tasks/{taskId}": {
+      "schema": { "$ref": "#/entities/AssistantTask" },
+      "description": "User-scoped task execution logs with verification states."
+    }
+  }
+}

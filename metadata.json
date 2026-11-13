@@ -1,0 +1,6 @@
+{
+  "name": "Gwen AI",
+  "description": "Gwen AI - Maximum Edition: Futuristic Android AI personal assistant with animated avatar, Gemini AI intelligence, voice control, phone automation, creative studio, and personal memory.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

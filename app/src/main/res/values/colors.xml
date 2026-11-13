@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="gwen_obsidian">#FF06070B</color>
+    <color name="gwen_surface">#FF0D101B</color>
+    <color name="gwen_cyan">#FF00E5FF</color>
+    <color name="gwen_violet">#FF9D4EDD</color>
+    <color name="gwen_blue">#FF3A86FF</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>
